@@ -21,7 +21,11 @@ public class Query {
     }
     
     public static String getUserByUsernamePass(String username, String password){
-        return "SELECT * FROM user WHERE username='"+username+"' AND password='"+password+"'";
+        return "SELECT * FROM user WHERE username='"+username+"' AND password='"+password+"' AND role = 2";
+    }
+    
+    public static String getAdminByUsernamePass(String username, String password){
+        return "SELECT * FROM user WHERE username='"+username+"' AND password='"+password+"' AND role = 1";
     }
     
     public static String getUserByIdPass(int id, String password){

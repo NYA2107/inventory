@@ -34,6 +34,4 @@ public class Pengajuan {
         this.tanggal_pengajuan = tanggal_pengajuan;
         this.status = status;
     }
-
-
 }
