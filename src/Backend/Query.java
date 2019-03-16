@@ -55,13 +55,41 @@ public class Query {
         return "SELECT * FROM pengajuan WHERE id = "+id;
     }
     
+    public static String getPengajuanByIdUser(int id_user){
+        return "SELECT * FROM pengajuan WHERE id_user = "+id_user;
+    }
+    
     public static String updateStatusPengajuan(int id, String status){
         return "UPDATE `pengajuan` SET `status` = '"+status+"' WHERE `pengajuan`.`id` = "+id+";";
+    }
+    
+    public static String updateStatusPengajuanByNopol(String nopol, String status){
+        return "UPDATE `pengajuan` SET `status` = '"+status+"' WHERE `pengajuan`.`nopol` = '"+nopol+"';";
     }
     
     public static String addPengajuan(String nama_1, String nama_2, String nip_1, String nip_2, String jabatan_1, String jabatan_2, String alamat_1, String alamat_2, int id_user, String nopol, String merk, String jenis, String kondisi, Date tanggal_pengajuan){
         return "INSERT INTO `pengajuan` (`id`, `nama_1`, `nama_2`, `nip_1`, `nip_2`, `jabatan_1`, `jabatan_2`, `alamat_1`, `alamat_2`, `id_user`, `nopol`, `merk`, `jenis`, `kondisi`, `tanggal_pengajuan`, `status`) VALUES (NULL, '"+nama_1+"', '"+nama_2+"', '"+nip_1+"', '"+nip_2+"', '"+jabatan_1+"', '"+jabatan_2+"', '"+alamat_1+"', '"+alamat_2+"', '"+id_user+"', '"+nopol+"', '"+merk+"', '"+jenis+"', '"+kondisi+"', '"+tanggal_pengajuan+"', 'Diajukan');";
     }
 
+//  Aset
+    public static String getAllAset(){
+        return "SELECT * FROM aset_tb WHERE 1";
+    }
+    
+    public static String getAsetById(int id){
+        return "SELECT * FROM aset_tb WHERE id = "+id;
+    }
+    
+    public static String getAsetByIdUser(int id_user){
+        return "SELECT * FROM aset WHERE id_user = "+id_user;
+    }
+    
+//    public static String updateStatusPengajuan(int id, String status){
+//        return "UPDATE `pengajuan` SET `status` = '"+status+"' WHERE `pengajuan`.`id` = "+id+";";
+//    }
+//    
+//    public static String addPengajuan(String nama_1, String nama_2, String nip_1, String nip_2, String jabatan_1, String jabatan_2, String alamat_1, String alamat_2, int id_user, String nopol, String merk, String jenis, String kondisi, Date tanggal_pengajuan){
+//        return "INSERT INTO `pengajuan` (`id`, `nama_1`, `nama_2`, `nip_1`, `nip_2`, `jabatan_1`, `jabatan_2`, `alamat_1`, `alamat_2`, `id_user`, `nopol`, `merk`, `jenis`, `kondisi`, `tanggal_pengajuan`, `status`) VALUES (NULL, '"+nama_1+"', '"+nama_2+"', '"+nip_1+"', '"+nip_2+"', '"+jabatan_1+"', '"+jabatan_2+"', '"+alamat_1+"', '"+alamat_2+"', '"+id_user+"', '"+nopol+"', '"+merk+"', '"+jenis+"', '"+kondisi+"', '"+tanggal_pengajuan+"', 'Diajukan');";
+//    }
     
 }

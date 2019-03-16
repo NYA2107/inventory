@@ -93,8 +93,18 @@ public class PengajuanController {
         return fill(rs);
     }
     
+    public Pengajuan getPengajuanByIdUser(int id_user){
+        ResultSet rs = KoneksiDB.executeQuery(Query.getPengajuanByIdUser(id_user));
+        return fill(rs);
+    }
+    
     public boolean updateStatusPengajuan(int id, String status){
         int rs = KoneksiDB.execute(Query.updateStatusPengajuan(id, status));
+        return rs == 1;
+    }
+    
+    public boolean updateStatusPengajuanByNopol(String nopol, String status){
+        int rs = KoneksiDB.execute(Query.updateStatusPengajuanByNopol(nopol, status));
         return rs == 1;
     }
     
