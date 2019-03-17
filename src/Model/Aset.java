@@ -12,7 +12,7 @@ import java.sql.Date;
  * @author GHOST
  */
 public class Aset {
-    int id;
+    int id, id_user;
     String nup;
     String nama; 
     String kondisi; 
@@ -21,8 +21,9 @@ public class Aset {
     Date tanggal_kontrak; 
     Date tanggal_akhir_kontrak;
     
-    public Aset(int id, String nup, String nama, String kondisi, String penggunaan,int nilai_perolehan,Date tanggal_kontrak, Date tanggal_akhir_kontrak){
+    public Aset(int id, int id_user, String nup, String nama, String kondisi, String penggunaan,int nilai_perolehan,Date tanggal_kontrak, Date tanggal_akhir_kontrak){
         this.id = id;
+        this.id_user = id_user;
         this.nup = nup;
         this.nama = nama;
         this.kondisi = kondisi;
