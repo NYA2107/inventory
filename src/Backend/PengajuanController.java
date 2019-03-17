@@ -93,9 +93,9 @@ public class PengajuanController {
         return fill(rs);
     }
     
-    public Pengajuan getPengajuanByIdUser(int id_user){
+    public LinkedList<Pengajuan> getPengajuanByIdUser(int id_user){
         ResultSet rs = KoneksiDB.executeQuery(Query.getPengajuanByIdUser(id_user));
-        return fill(rs);
+        return fillList(rs);
     }
     
     public boolean updateStatusPengajuan(int id, String status){

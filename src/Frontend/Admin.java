@@ -49,6 +49,11 @@ public class Admin extends javax.swing.JFrame {
         jButton1.setText("Riwayat");
 
         jButton2.setText("Manajemen Pengajuan");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Setting");
 
@@ -108,6 +113,14 @@ public class Admin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        AdminPengajuan fa = new AdminPengajuan();
+        fa.setLocationRelativeTo(null);
+        this.setVisible(false);
+        fa.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -121,6 +121,7 @@ public class Login extends javax.swing.JFrame {
         } else {
             hasil = this.user.getUserByUsernamePass(TxtUsername.getText(), TxtPassword.getText());
             if (hasil != null) {
+                UserID.setUserLogin(hasil.id);
                 if (hasil.role == 1) {
                     Admin fa = new Admin();
                     fa.setLocationRelativeTo(null);
