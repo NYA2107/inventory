@@ -5,6 +5,7 @@
  */
 package Frontend;
 
+import Backend.AsetController;
 import Backend.PengajuanController;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -17,7 +18,7 @@ import static javax.swing.UIManager.getString;
  */
 public class UserAsetTambah extends javax.swing.JFrame {
 
-    PengajuanController pengajuan;
+    AsetController aset;
     int selected;
 
     /**
@@ -25,8 +26,10 @@ public class UserAsetTambah extends javax.swing.JFrame {
      */
     public UserAsetTambah() {
         initComponents();
-        this.pengajuan = new PengajuanController();
-        ComKondisi.setSelectedItem(null);
+        this.aset = new AsetController();
+        jDateChooser1.setDate(null);
+        jDateChooser2.setDate(null);
+        
     }
 
     /**
@@ -94,7 +97,7 @@ public class UserAsetTambah extends javax.swing.JFrame {
             }
         });
 
-        ComKondisi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComKondisi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Baik", "Rusak" }));
 
         TxtPenggunaan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,21 +208,23 @@ public class UserAsetTambah extends javax.swing.JFrame {
     private void BtnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSubmitActionPerformed
         // TODO add your handling code here:
         boolean hasil = false;
-        if ("".equals(TxtNup.getText()) || "".equals(TxtNamaBarang.getText()) || ComKondisi.getSelectedItem() == null || "".equals(TxtNilaiPerolehan.getText())
-                || "".equals(TxtPenggunaan.getText())){
+        if ("".equals(TxtNup.getText()) || "".equals(TxtNamaBarang.getText()) || "".equals(TxtNilaiPerolehan.getText())
+                || "".equals(TxtPenggunaan.getText()) || jDateChooser1.getDate() == null || jDateChooser2.getDate() == null){
             JOptionPane.showMessageDialog(this, "Harap Lengkapi Data", "Error", JOptionPane.WARNING_MESSAGE);
         } else {
             String tanggal ="yyyy-MM-dd";SimpleDateFormat fm = new SimpleDateFormat(tanggal);
-            Date tanggalPengajuan = Date.valueOf(fm.format(jDateChooser1.getDate())); 
-            hasil = this.pengajuan.addPengajuan(TxtNup.getText(), TxtNama2.getText(), TxtNamaBarang.getText(), TxtNip2.getText(), TxtKondisi.getText(), TxtJabatan2.getText(), TxtNilaiPerolehan.getText(), TxtAlamat2.getText(), UserID.getUserLogin(), TxtNopol.getText(), TxtMerk.getText(), getString(ComJenis.getSelectedItem()), getString(ComKondisi.getSelectedItem()), tanggalPengajuan);
+            Date tanggalKontrak = Date.valueOf(fm.format(jDateChooser1.getDate())); 
+            Date tanggalAkhirKontrak = Date.valueOf(fm.format(jDateChooser2.getDate())); 
+            hasil = this.aset.addAset(1, TxtNup.getText(), TxtNamaBarang.getText(), getString(ComKondisi.getSelectedIndex()), TxtPenggunaan.getText(), Integer.parseInt(TxtNilaiPerolehan.getText()), tanggalKontrak, tanggalAkhirKontrak);
+//        (TxtNup.getText(), TxtNama2.getText(), TxtNamaBarang.getText(), TxtNip2.getText(), TxtKondisi.getText(), TxtJabatan2.getText(), TxtNilaiPerolehan.getText(), TxtAlamat2.getText(), UserID.getUserLogin(), TxtNopol.getText(), TxtMerk.getText(), getString(ComJenis.getSelectedItem()), getString(ComKondisi.getSelectedItem()), tanggalPengajuan);
             if (hasil = true) {
-                JOptionPane.showMessageDialog(null, "Pengajuan Berhasil Ditambahkan");
-                UserRiwayat fa = new UserRiwayat();
+                JOptionPane.showMessageDialog(null, "Aset Berhasil Ditambahkan");
+                UserAset fa = new UserAset();
                 fa.setLocationRelativeTo(null);
                 this.setVisible(false);
                 fa.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Pengajuan Gagal");
+                JOptionPane.showMessageDialog(null, "Penambahan Aset Gagal");
             }
         }
     }//GEN-LAST:event_BtnSubmitActionPerformed
@@ -232,17 +237,11 @@ public class UserAsetTambah extends javax.swing.JFrame {
         // TODO add your handling code here:
         TxtNup.setText("");
         TxtNamaBarang.setText("");
-        TxtKondisi.setText("");
+        TxtPenggunaan.setText("");
         TxtNilaiPerolehan.setText("");
-        TxtNama2.setText("");
-        TxtNip2.setText("");
-        TxtJabatan2.setText("");
-        TxtAlamat2.setText("");
-        TxtNopol.setText("");
-        TxtMerk.setText("");
-        ComJenis.setSelectedItem(null);
         ComKondisi.setSelectedItem(null);
         jDateChooser1.setDate(null);
+        jDateChooser2.setDate(null);
     }//GEN-LAST:event_BtnClearActionPerformed
 
     private void TxtPenggunaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPenggunaanActionPerformed
