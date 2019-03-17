@@ -89,8 +89,8 @@ public class AsetController {
 //    }
     
     //status diajukan
-    public boolean addPengajuan(String nama_1, String nama_2, String nip_1, String nip_2, String jabatan_1, String jabatan_2, String alamat_1, String alamat_2, int id_user, String nopol, String merk, String jenis, String kondisi, Date tanggal_pengajuan){
-        int rs = KoneksiDB.execute(Query.addPengajuan(nama_1, nama_2, nip_1, nip_2, jabatan_1, jabatan_2, alamat_1, alamat_2, id_user, nopol, merk, jenis, kondisi, tanggal_pengajuan));
-        return rs == 1;
-    }
+//    public boolean addPengajuan(String nama_1, String nama_2, String nip_1, String nip_2, String jabatan_1, String jabatan_2, String alamat_1, String alamat_2, int id_user, String nopol, String merk, String jenis, String kondisi, Date tanggal_pengajuan){
+//        int rs = KoneksiDB.execute(Query.addPengajuan(nama_1, nama_2, nip_1, nip_2, jabatan_1, jabatan_2, alamat_1, alamat_2, id_user, nopol, merk, jenis, kondisi, tanggal_pengajuan));
+//        return rs == 1;
+//    }
 }
