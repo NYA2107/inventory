@@ -89,7 +89,7 @@ public class Query {
     }
     
     public static String addAset(int id_user, String nup, String nama, String kondisi, String penggunaan,int nilai_perolehan,Date tanggal_kontrak, Date tanggal_akhir_kontrak){
-        return "INSERT INTO `aset_tb` (`id`, `id_user`, `nama`, `kondisi`, `penggunaan`, `nilai_perolehan`, `tanggal_kontrak`, `tanggal_akhir_kontrak`) VALUES (NULL, '"+id_user+"', '"+nama+"', '"+kondisi+"', '"+penggunaan+"', '"+nilai_perolehan+"', '"+tanggal_kontrak+"', '"+tanggal_akhir_kontrak+"');";
+        return "INSERT INTO `aset_tb` (`id`, `id_user`, `nup`, `nama`, `kondisi`, `penggunaan`, `nilai_perolehan`, `tanggal_kontrak`, `tanggal_akhir_kontrak`) VALUES (NULL, '"+id_user+"', '"+nup+"', '"+nama+"', '"+kondisi+"', '"+penggunaan+"', '"+nilai_perolehan+"', '"+tanggal_kontrak+"', '"+tanggal_akhir_kontrak+"');";
     }
     
 }
