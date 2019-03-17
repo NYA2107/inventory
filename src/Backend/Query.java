@@ -88,8 +88,16 @@ public class Query {
         return "SELECT * FROM aset WHERE id_user = "+id_user;
     }
     
-    public static String addAset(int id_user, String nup, String nama, String kondisi, String penggunaan,int nilai_perolehan,Date tanggal_kontrak, Date tanggal_akhir_kontrak){
+    public static String addAset(int id_user, String nup, String nama, String kondisi, String penggunaan,int nilai_perolehan, Date tanggal_kontrak, Date tanggal_akhir_kontrak){
         return "INSERT INTO `aset_tb` (`id`, `id_user`, `nup`, `nama`, `kondisi`, `penggunaan`, `nilai_perolehan`, `tanggal_kontrak`, `tanggal_akhir_kontrak`) VALUES (NULL, '"+id_user+"', '"+nup+"', '"+nama+"', '"+kondisi+"', '"+penggunaan+"', '"+nilai_perolehan+"', '"+tanggal_kontrak+"', '"+tanggal_akhir_kontrak+"');";
+    }
+    
+    public static String updateAset(int id, int id_user, String nup, String nama, String kondisi, String penggunaan,int nilai_perolehan,Date tanggal_kontrak, Date tanggal_akhir_kontrak){
+        return "UPDATE `aset_tb` SET `id_user` = '"+id_user+"', `nup` = '"+nup+"', `nama` = '"+nama+"', `kondisi` = '"+kondisi+"', `penggunaan` = '"+penggunaan+"', `nilai_perolehan` = '"+nilai_perolehan+"', `tanggal_kontrak` = '"+tanggal_kontrak+"', `tanggal_akhir_kontrak` = '"+tanggal_akhir_kontrak+"' WHERE `aset_tb`.`id` = "+id+";";
+    }
+    
+    public static String deleteAset(int id){
+        return "DELETE FROM `aset_tb` WHERE `aset_tb`.`id` = "+id;
     }
     
 }

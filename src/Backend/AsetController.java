@@ -82,4 +82,16 @@ public class AsetController {
         int rs = KoneksiDB.execute(Query.addAset(id_user, nup, nama, kondisi, penggunaan,nilai_perolehan,tanggal_kontrak, tanggal_akhir_kontrak));
         return rs == 1;
     }
+    
+    public boolean updateAset(int id, int id_user, String nup, String nama, String kondisi, String penggunaan,int nilai_perolehan,Date tanggal_kontrak, Date tanggal_akhir_kontrak){
+        int rs = KoneksiDB.execute(Query.updateAset(id, id_user, nup, nama, kondisi, penggunaan,nilai_perolehan,tanggal_kontrak, tanggal_akhir_kontrak));
+        return rs == 1;
+    }
+    
+    public boolean updateAset(int id){
+        int rs = KoneksiDB.execute(Query.deleteAset(id));
+        return rs == 1;
+    }
+    
+    
 }
