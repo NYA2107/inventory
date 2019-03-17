@@ -93,8 +93,8 @@ public class PengajuanController {
         return fill(rs);
     }
     
-    public LinkedList<Pengajuan> getPengajuanByIdUser(int id_user){
-        ResultSet rs = KoneksiDB.executeQuery(Query.getPengajuanByIdUser(id_user));
+    public LinkedList<Pengajuan> getAllPengajuanByIdUser(int id_user){
+        ResultSet rs = KoneksiDB.executeQuery(Query.getAllPengajuanByIdUser(id_user));
         return fillList(rs);
     }
     

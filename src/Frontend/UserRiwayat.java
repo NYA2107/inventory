@@ -47,7 +47,7 @@ public class UserRiwayat extends javax.swing.JFrame {
         LinkedList<Pengajuan> record;
         String kolom[] = {"ID", "Tanggal", "Nopol", "Merk", "Status"};
         DefaultTableModel dtm = new DefaultTableModel(null, kolom);
-        record = this.pengajuan.getPengajuanByIdUser(UserID.getUserLogin());
+        record = this.pengajuan.getAllPengajuanByIdUser(UserID.getUserLogin());
         for (Pengajuan data :record) {
             String row[] = {Integer.toString(data.id), data.tanggal_pengajuan.toString(), data.nopol, data.merk, data.status};
             dtm.addRow(row);

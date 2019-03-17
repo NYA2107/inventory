@@ -3,19 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/GHOST/Documents/NetBeansProjects/inventory/src/Model/User.java</file>
-            <file>file:/C:/Users/GHOST/Documents/NetBeansProjects/inventory/src/Frontend/Login.java</file>
-            <file>file:/C:/Users/GHOST/Documents/NetBeansProjects/inventory/src/Model/Pengajuan.java</file>
-            <file>file:/C:/Users/GHOST/Documents/NetBeansProjects/inventory/src/Model/Aset.java</file>
-            <file>file:/C:/Users/GHOST/Documents/NetBeansProjects/inventory/src/Backend/AsetController.java</file>
-            <file>file:/C:/Users/GHOST/Documents/NetBeansProjects/inventory/src/Backend/Query.java</file>
-            <file>file:/C:/Users/GHOST/Documents/NetBeansProjects/inventory/src/Frontend/Register.java</file>
-            <file>file:/C:/Users/GHOST/Documents/NetBeansProjects/inventory/src/Inventory/Inventory.java</file>
-            <file>file:/C:/Users/GHOST/Documents/NetBeansProjects/inventory/src/Frontend/UserUI.java</file>
-            <file>file:/C:/Users/GHOST/Documents/NetBeansProjects/inventory/src/Backend/UserController.java</file>
-            <file>file:/C:/Users/GHOST/Documents/NetBeansProjects/inventory/src/Backend/KoneksiDB.java</file>
-            <file>file:/C:/Users/GHOST/Documents/NetBeansProjects/inventory/src/Frontend/Admin.java</file>
-            <file>file:/C:/Users/GHOST/Documents/NetBeansProjects/inventory/src/Backend/PengajuanController.java</file>
+            <file>file:/home/dimashv/NetBeansProjects/inventory/src/Frontend/UserAset.java</file>
+            <file>file:/home/dimashv/NetBeansProjects/inventory/src/Backend/Query.java</file>
+            <file>file:/home/dimashv/NetBeansProjects/inventory/src/Backend/AsetController.java</file>
+            <file>file:/home/dimashv/NetBeansProjects/inventory/src/Backend/PengajuanController.java</file>
+            <file>file:/home/dimashv/NetBeansProjects/inventory/src/Frontend/UserAsetTambah.java</file>
+            <file>file:/home/dimashv/NetBeansProjects/inventory/src/Frontend/UserRiwayat.java</file>
         </group>
     </open-files>
 </project-private>
