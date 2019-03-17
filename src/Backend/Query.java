@@ -59,6 +59,10 @@ public class Query {
         return "SELECT * FROM pengajuan WHERE id_user = "+id_user;
     }
     
+    public static String getAllPengajuanByTanggal(String tanggal_pengajuan){
+        return "SELECT * FROM pengajuan WHERE tanggal_pengajuan = '"+tanggal_pengajuan+"';";
+    }
+    
     public static String updateStatusPengajuan(int id, String status){
         return "UPDATE `pengajuan` SET `status` = '"+status+"' WHERE `pengajuan`.`id` = "+id+";";
     }

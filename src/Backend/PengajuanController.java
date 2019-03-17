@@ -98,6 +98,11 @@ public class PengajuanController {
         return fillList(rs);
     }
     
+    public LinkedList<Pengajuan> getAllPengajuanByTanggal(String tanggal_pengajuan){
+        ResultSet rs = KoneksiDB.executeQuery(Query.getAllPengajuanByTanggal(tanggal_pengajuan));
+        return fillList(rs);
+    }
+    
     public boolean updateStatusPengajuan(int id, String status){
         int rs = KoneksiDB.execute(Query.updateStatusPengajuan(id, status));
         return rs == 1;
