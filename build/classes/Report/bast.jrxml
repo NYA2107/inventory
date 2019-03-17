@@ -6,9 +6,6 @@
 	<field name="id" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="tanggal_pengajuan" class="java.sql.Date">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="nama_1" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -45,91 +42,83 @@
 	<field name="kondisi" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="tanggal_pengajuan" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<group name="id">
 		<groupExpression><![CDATA[$F{id}]]></groupExpression>
 		<groupHeader>
-			<band height="175" splitType="Stretch">
-				<textField>
-					<reportElement mode="Opaque" x="1" y="0" width="42" height="17" forecolor="#FFFFFF" backcolor="#000000"/>
-					<textElement>
-						<font size="10" isBold="true"/>
-					</textElement>
-					<textFieldExpression class="java.lang.Integer"><![CDATA[$F{id}]]></textFieldExpression>
-				</textField>
+			<band height="171" splitType="Stretch">
 				<staticText>
-					<reportElement x="71" y="17" width="424" height="36"/>
-					<textElement textAlignment="Center">
-						<font size="22" isBold="true"/>
-					</textElement>
-					<text><![CDATA[KEMENTERIAN PARIWISATA]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="71" y="148" width="424" height="14"/>
-					<textElement textAlignment="Center">
-						<font size="10" isBold="false"/>
-					</textElement>
-					<text><![CDATA[Nomor :                                                                  ]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="71" y="43" width="424" height="21"/>
+					<reportElement x="62" y="31" width="424" height="21"/>
 					<textElement textAlignment="Center">
 						<font size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[DEPUTI BIDANG PENGEMBANGAN PEMASARAN 1]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="71" y="92" width="424" height="14"/>
+					<reportElement x="62" y="80" width="424" height="14"/>
 					<textElement textAlignment="Center">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<text><![CDATA[Laman : www.kemenpar.go.id www.indonesia.travel]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="71" y="133" width="424" height="15"/>
+					<reportElement x="62" y="66" width="424" height="14"/>
 					<textElement textAlignment="Center">
-						<font size="12" isBold="true"/>
+						<font size="10" isBold="false"/>
 					</textElement>
-					<text><![CDATA[KENDARAAN DINAS OPERASIONAL]]></text>
+					<text><![CDATA[Telepon (021) 3838458, 3838342; Faksimile (021) 3847611]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="71" y="64" width="424" height="14"/>
+					<reportElement x="62" y="52" width="424" height="14"/>
 					<textElement textAlignment="Center">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<text><![CDATA[Jalan Medan Merdeka Barat Nomor 17, Jakarta Kode Post 10110]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="71" y="118" width="424" height="15"/>
+					<reportElement x="62" y="5" width="424" height="36"/>
+					<textElement textAlignment="Center">
+						<font size="22" isBold="true"/>
+					</textElement>
+					<text><![CDATA[KEMENTERIAN PARIWISATA]]></text>
+				</staticText>
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="0" y="94" width="555" height="1"/>
+				</line>
+				<staticText>
+					<reportElement x="62" y="106" width="424" height="15"/>
 					<textElement textAlignment="Center">
 						<font size="12" isBold="true"/>
 					</textElement>
 					<text><![CDATA[BERITA ACARA PINJAM PAKAI]]></text>
 				</staticText>
-				<line>
-					<reportElement positionType="FixRelativeToBottom" x="0" y="106" width="555" height="1"/>
-				</line>
 				<staticText>
-					<reportElement x="71" y="78" width="424" height="14"/>
+					<reportElement x="62" y="121" width="424" height="15"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[KENDARAAN DINAS OPERASIONAL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="62" y="136" width="424" height="14"/>
 					<textElement textAlignment="Center">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Telepon (021) 3838458, 3838342; Faksimile (021) 3847611]]></text>
+					<text><![CDATA[Nomor :                                                                  ]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="8" splitType="Stretch">
-				<line direction="BottomUp">
-					<reportElement key="line" x="1" y="4" width="554" height="1"/>
-				</line>
-			</band>
+			<band height="9" splitType="Stretch"/>
 		</groupFooter>
 	</group>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="17" splitType="Stretch"/>
+		<band height="8" splitType="Stretch"/>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
@@ -138,188 +127,316 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="716" splitType="Stretch">
+		<band height="595" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="139" height="20"/>
+				<reportElement x="1" y="45" width="87" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[tanggal_pengajuan]]></text>
+				<text><![CDATA[Nama]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="139" y="0" width="416" height="20"/>
+				<reportElement x="88" y="45" width="468" height="20"/>
 				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.util.Date"><![CDATA[$F{tanggal_pengajuan}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="20" width="139" height="20"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[nama_1]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="139" y="20" width="416" height="20"/>
-				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nama_1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="40" width="139" height="20"/>
+				<reportElement x="1" y="65" width="87" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[nip_1]]></text>
+				<text><![CDATA[NIP]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="139" y="40" width="416" height="20"/>
+				<reportElement x="88" y="65" width="468" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nip_1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="60" width="139" height="20"/>
+				<reportElement x="1" y="85" width="87" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[jabatan_1]]></text>
+				<text><![CDATA[Jabatan]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="139" y="60" width="416" height="20"/>
+				<reportElement x="88" y="85" width="468" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{jabatan_1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="80" width="139" height="20"/>
+				<reportElement x="1" y="105" width="87" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[alamat_1]]></text>
+				<text><![CDATA[Alamat]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="139" y="80" width="416" height="20"/>
+				<reportElement x="88" y="105" width="468" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{alamat_1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="100" width="139" height="20"/>
+				<reportElement x="1" y="180" width="87" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[nama_2]]></text>
+				<text><![CDATA[Nama]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="139" y="100" width="416" height="20"/>
+				<reportElement x="88" y="180" width="468" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nama_2}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="120" width="139" height="20"/>
+				<reportElement x="1" y="200" width="87" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[nip_2]]></text>
+				<text><![CDATA[NIP]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="139" y="120" width="416" height="20"/>
+				<reportElement x="88" y="200" width="468" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nip_2}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="140" width="139" height="20"/>
+				<reportElement x="1" y="220" width="87" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[jabatan_2]]></text>
+				<text><![CDATA[Jabatan]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="139" y="140" width="416" height="20"/>
+				<reportElement x="88" y="220" width="468" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{jabatan_2}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="160" width="139" height="20"/>
+				<reportElement x="1" y="240" width="87" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[alamat_2]]></text>
+				<text><![CDATA[Alamat]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="139" y="160" width="416" height="20"/>
+				<reportElement x="88" y="240" width="468" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{alamat_2}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="180" width="139" height="20"/>
+				<reportElement x="1" y="376" width="139" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[nopol]]></text>
+				<text><![CDATA[Nomor Polisi]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="139" y="180" width="416" height="20"/>
+				<reportElement x="140" y="376" width="416" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nopol}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="200" width="139" height="20"/>
+				<reportElement x="1" y="396" width="139" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[merk]]></text>
+				<text><![CDATA[Merk]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="139" y="200" width="416" height="20"/>
+				<reportElement x="140" y="396" width="416" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{merk}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="220" width="139" height="20"/>
+				<reportElement x="1" y="416" width="139" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[jenis]]></text>
+				<text><![CDATA[Jenis]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="139" y="220" width="416" height="20"/>
+				<reportElement x="140" y="416" width="416" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{jenis}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="240" width="139" height="20"/>
+				<reportElement x="1" y="436" width="139" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[kondisi]]></text>
+				<text><![CDATA[Kondisi]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="139" y="240" width="416" height="20"/>
+				<reportElement x="140" y="436" width="416" height="20"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{kondisi}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="62" y="0" width="416" height="20"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{tanggal_pengajuan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="551" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Pada hari]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="20" width="551" height="25"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Yang bertanda tangan dibawah ini:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="142" width="551" height="25"/>
+				<textElement textAlignment="Justified">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[dalam hal ini bertindak untuk dan atas nama Kepala Biro Umum, Kepegawaian, Hukum dan Organisasi, yang selanjutnya disebut sebagai PIHAK PERTAMA.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="277" width="551" height="25"/>
+				<textElement textAlignment="Justified">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[dalam hal ini bertindak untuk dan atas nama Sekretaris Deputi Bidang Pengembangan Pemasaran I, yang selanjutnya disebut sebagai PIHAK KEDUA.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="313" width="551" height="52"/>
+				<textElement textAlignment="Justified">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Dalam rangka tertib administrasi Barang Milik Negara khususnya kendaraan dinas operasional yang tercatat dalam Aset Sekretariat Kementerian tetapi pemanfaatan dan penggunaan kendaraan tersebut berada pada Debuti Bidang Pengembangan Pemasaran I, maka diadakan berita acara pinjam pakai kendaraan dinas operasional ini sebagaimana daftar kendaraan sebagai berikut:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="466" width="551" height="26"/>
+				<textElement textAlignment="Justified">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[PIHAK PERTAMA dan PIHAK KEDUA sepakat mengadakan serah terima pinjam pakai Barang Milik Negara yang diatur sebagai berikut:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="505" width="551" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Pasal 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="530" width="551" height="26"/>
+				<textElement textAlignment="Justified">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[a) PIHAK PERTAMA menyerahkan barang kepada PIHAK KEDUA dan PIHAK KEDUA menyatakan menerima dari PIHAK PERTAMA barang berupa kendaraan dinas operasional dengan data seperti diatas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="556" width="551" height="26"/>
+				<textElement textAlignment="Justified">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[b) Penyerahan kendaran dinas operasional ini digunakan untuk operasional di lingkungan Deputi Bidang Pengembangan Pemasaran I.]]></text>
+			</staticText>
+		</band>
+		<band height="296">
+			<staticText>
+				<reportElement x="1" y="14" width="551" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Pasal 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="39" width="551" height="38"/>
+				<textElement textAlignment="Justified">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Dengan ditandatangani Berita Acara Serah Terima ini sebagaimana tersebut dalam pasal 1 (satu_ di atas, maka kendaraan dimaksud menjadi tanggung jawab PIHAK KEDUA dan semua biaya yang ditimbulkan akan dibebankan pada anggaran Deputi Bidang Pengembangan Pemasaran I.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="97" width="551" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Pasal 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="124" width="551" height="38"/>
+				<textElement textAlignment="Justified">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Demikian Berita Acara Serah Terima ini dibuat dengan sebenarnya dan apabila dikemudian hari ternyata terdapat kekeliruan dalam Berita ACara Serah Terima ini, akan diadakan perbaikan sebagaimana mestinya.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="173" width="160" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[PIHAK PERTAMA,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="173" width="160" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[PIHAK KEDUA,]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="26" y="242" width="160" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nama_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="262" width="160" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nip_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="262" width="160" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nip_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="373" y="242" width="160" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nama_1}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

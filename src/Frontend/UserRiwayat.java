@@ -7,6 +7,7 @@ package Frontend;
 
 import Backend.KoneksiDB;
 import Backend.PengajuanController;
+import Backend.Query;
 import Model.Pengajuan;
 import java.io.File;
 import java.util.HashMap;
@@ -180,7 +181,7 @@ public class UserRiwayat extends javax.swing.JFrame {
         try {
             jd = JRXmlLoader.load(new File("").getAbsolutePath() + "/src/Report/BAST.jrxml");
             JRDesignQuery newQuery = new JRDesignQuery();
-            newQuery.setText("SELECT * FROM pengajuan WHERE id = "+selected);
+            newQuery.setText(Query.getPengajuanById(selected));
             jd.setQuery(newQuery);
             JasperReport jr = JasperCompileManager.compileReport(jd);
             Map parameter = new HashMap();
