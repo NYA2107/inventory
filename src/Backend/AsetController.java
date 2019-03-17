@@ -88,7 +88,7 @@ public class AsetController {
         return rs == 1;
     }
     
-    public boolean updateAset(int id){
+    public boolean deleteAset(int id){
         int rs = KoneksiDB.execute(Query.deleteAset(id));
         return rs == 1;
     }

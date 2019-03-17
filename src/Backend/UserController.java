@@ -76,6 +76,11 @@ public class UserController {
         return fill(rs);
     }
     
+    public User getUserLoginByUsernamePass(String username, String password){
+        ResultSet rs = KoneksiDB.executeQuery(Query.getUserLoginByUsernamePass(username, password));
+        return fill(rs);
+    }
+    
     public User getAdminByUsernamePass(String username, String password){
         ResultSet rs = KoneksiDB.executeQuery(Query.getAdminByUsernamePass(username, password));
         return fill(rs);

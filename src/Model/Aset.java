@@ -12,14 +12,14 @@ import java.sql.Date;
  * @author GHOST
  */
 public class Aset {
-    int id, id_user;
-    String nup;
-    String nama; 
-    String kondisi; 
-    String penggunaan; 
-    int nilai_perolehan;
-    Date tanggal_kontrak; 
-    Date tanggal_akhir_kontrak;
+    public int id, id_user;
+    public String nup;
+    public String nama; 
+    public String kondisi; 
+    public String penggunaan; 
+    public int nilai_perolehan;
+    public Date tanggal_kontrak; 
+    public Date tanggal_akhir_kontrak;
     
     public Aset(int id, int id_user, String nup, String nama, String kondisi, String penggunaan,int nilai_perolehan,Date tanggal_kontrak, Date tanggal_akhir_kontrak){
         this.id = id;

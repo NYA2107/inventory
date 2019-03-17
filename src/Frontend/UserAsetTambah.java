@@ -20,10 +20,18 @@ public class UserAsetTambah extends javax.swing.JFrame {
 
     AsetController aset;
     int selected;
-
+    int idBarang;
     /**
      * Creates new form Admin
      */
+    public UserAsetTambah(int idBarang) {
+        initComponents();
+        this.idBarang = idBarang;
+        this.aset = new AsetController();
+        jDateChooser1.setDate(null);
+        jDateChooser2.setDate(null);
+        
+    }
     public UserAsetTambah() {
         initComponents();
         this.aset = new AsetController();
@@ -59,11 +67,12 @@ public class UserAsetTambah extends javax.swing.JFrame {
         ComKondisi = new javax.swing.JComboBox<>();
         TxtPenggunaan = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel4.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jLabel4.setText("Form Pengajuan");
+        jLabel4.setText("Aset Tidak Bergerak");
 
         jLabel2.setText("NUP");
 
@@ -107,6 +116,13 @@ public class UserAsetTambah extends javax.swing.JFrame {
 
         jLabel7.setText("Penggunaan");
 
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -141,6 +157,9 @@ public class UserAsetTambah extends javax.swing.JFrame {
                                 .addComponent(BtnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(ComKondisi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(36, 36, 36))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jButton1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,7 +199,9 @@ public class UserAsetTambah extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BtnClear)
                     .addComponent(BtnSubmit))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,8 +236,9 @@ public class UserAsetTambah extends javax.swing.JFrame {
             String tanggal ="yyyy-MM-dd";SimpleDateFormat fm = new SimpleDateFormat(tanggal);
             Date tanggalKontrak = Date.valueOf(fm.format(jDateChooser1.getDate())); 
             Date tanggalAkhirKontrak = Date.valueOf(fm.format(jDateChooser2.getDate())); 
-            hasil = this.aset.addAset(1, TxtNup.getText(), TxtNamaBarang.getText(), getString(ComKondisi.getSelectedIndex()), TxtPenggunaan.getText(), Integer.parseInt(TxtNilaiPerolehan.getText()), tanggalKontrak, tanggalAkhirKontrak);
+            hasil = this.aset.addAset(UserID.getUserLogin(), TxtNup.getText(), TxtNamaBarang.getText(), ComKondisi.getSelectedItem().toString(), TxtPenggunaan.getText(), Integer.parseInt(TxtNilaiPerolehan.getText()), tanggalKontrak, tanggalAkhirKontrak);
 //        (TxtNup.getText(), TxtNama2.getText(), TxtNamaBarang.getText(), TxtNip2.getText(), TxtKondisi.getText(), TxtJabatan2.getText(), TxtNilaiPerolehan.getText(), TxtAlamat2.getText(), UserID.getUserLogin(), TxtNopol.getText(), TxtMerk.getText(), getString(ComJenis.getSelectedItem()), getString(ComKondisi.getSelectedItem()), tanggalPengajuan);
+            System.out.println(ComKondisi.getSelectedItem());
             if (hasil = true) {
                 JOptionPane.showMessageDialog(null, "Aset Berhasil Ditambahkan");
                 UserAset fa = new UserAset();
@@ -247,6 +269,14 @@ public class UserAsetTambah extends javax.swing.JFrame {
     private void TxtPenggunaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPenggunaanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtPenggunaanActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        UserAset fa = new UserAset();
+        fa.setLocationRelativeTo(null);
+        this.setVisible(false);
+        fa.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,6 +336,7 @@ public class UserAsetTambah extends javax.swing.JFrame {
     private javax.swing.JTextField TxtNilaiPerolehan;
     private javax.swing.JTextField TxtNup;
     private javax.swing.JTextField TxtPenggunaan;
+    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel18;

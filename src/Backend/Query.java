@@ -22,6 +22,10 @@ public class Query {
         return "SELECT * FROM user WHERE id = "+id;
     }
     
+    public static String getUserLoginByUsernamePass(String username, String password){
+        return "SELECT * FROM user WHERE username='"+username+"' AND password='"+password+"';";
+    }
+
     public static String getUserByUsernamePass(String username, String password){
         return "SELECT * FROM user WHERE username='"+username+"' AND password='"+password+"' AND role = 2";
     }
@@ -85,7 +89,7 @@ public class Query {
     }
     
     public static String getAllAsetByIdUser(int id_user){
-        return "SELECT * FROM aset WHERE id_user = "+id_user;
+        return "SELECT * FROM aset_tb WHERE id_user = "+id_user;
     }
     
     public static String addAset(int id_user, String nup, String nama, String kondisi, String penggunaan,int nilai_perolehan, Date tanggal_kontrak, Date tanggal_akhir_kontrak){

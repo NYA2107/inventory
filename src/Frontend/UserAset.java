@@ -5,14 +5,28 @@
  */
 package Frontend;
 
-import Backend.PengajuanController;
-import Model.Pengajuan;
-import java.sql.ResultSet;
+import Backend.AsetController;
+import Backend.KoneksiDB;
+import Backend.Query;
+import Model.Aset;
+import java.io.File;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -20,7 +34,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class UserAset extends javax.swing.JFrame {
 
-    PengajuanController pengajuan;
+    AsetController aset;
     int selected;
 
     /**
@@ -28,21 +42,22 @@ public class UserAset extends javax.swing.JFrame {
      */
     public UserAset() {
         initComponents();
-        this.pengajuan = new PengajuanController();
+        this.aset = new AsetController();
         selectData();
     }
 
     public void selectData() {
-        String kolom[] = {"NUP", "Nama Barang", "Kondisi", "Penggunaan", "Nilai Perolehan", "Tanggal Kontrak", "Tanggak Akhir Kontrak"};
+        String kolom[] = {"ID", "NUP", "Nama Barang", "Kondisi", "Penggunaan", "Nilai Perolehan", "Tanggal Kontrak", "Tanggak Akhir Kontrak"};
         DefaultTableModel dtm = new DefaultTableModel(null, kolom);
-            LinkedList<Pengajuan> record;
+
         try {
-            record = pengajuan.getAllPengajuanAwal();
-            for (Pengajuan data : record) {
-                String row[] = {Integer.toString(data.id), data.nopol, data.merk, data.nama_1};
+            LinkedList<Aset> record = aset.getAllAsetByIdUser(UserID.getUserLogin());
+            for (Aset data : record) {
+                System.out.println(data);
+                String row[] = {Integer.toString(data.id), data.nup, data.nama, data.kondisi, data.penggunaan, Integer.toString(data.nilai_perolehan), data.tanggal_kontrak.toString(), data.tanggal_akhir_kontrak.toString()};
                 dtm.addRow(row);
             }
-        TablePengajuan.setModel(dtm);
+            TableAset.setModel(dtm);
         } catch (SQLException ex) {
             Logger.getLogger(UserAset.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -60,20 +75,21 @@ public class UserAset extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablePengajuan = new javax.swing.JTable();
+        TableAset = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel4.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         jLabel4.setText("Manajemen Aset Tidak Bergerak");
 
-        TablePengajuan.setModel(new javax.swing.table.DefaultTableModel(
+        TableAset.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -84,12 +100,12 @@ public class UserAset extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        TablePengajuan.addMouseListener(new java.awt.event.MouseAdapter() {
+        TableAset.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TablePengajuanMouseClicked(evt);
+                TableAsetMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(TablePengajuan);
+        jScrollPane1.setViewportView(TableAset);
 
         jButton4.setText("Tambah Barang");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -127,6 +143,11 @@ public class UserAset extends javax.swing.JFrame {
         );
 
         jButton1.setText("View");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Delete");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +170,13 @@ public class UserAset extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("Back");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -159,7 +187,10 @@ public class UserAset extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)))
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton6)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +203,9 @@ public class UserAset extends javax.swing.JFrame {
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,39 +226,89 @@ public class UserAset extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TablePengajuanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablePengajuanMouseClicked
+    private void TableAsetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableAsetMouseClicked
         // TODO add your handling code here:
-        int baris = TablePengajuan.getSelectedRow();
+        int baris = TableAset.getSelectedRow();
         if (baris != -1) {
 //            txtID.setText(tblData.getValueAt(baris, 0).toString());
-            selected = Integer.parseInt(TablePengajuan.getValueAt(baris, 0).toString());
+            selected = Integer.parseInt(TableAset.getValueAt(baris, 0).toString());
         }
-        
-    }//GEN-LAST:event_TablePengajuanMouseClicked
+
+    }//GEN-LAST:event_TableAsetMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        if (pengajuan.updateStatusPengajuan(selected, "Diterima")){
-            System.out.println("masuk");
-        }
+        UserAsetEdit fa = new UserAsetEdit(selected);
+        fa.setLocationRelativeTo(null);
+        this.setVisible(false);
+        fa.setVisible(true);
         selectData();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if (pengajuan.updateStatusPengajuan(selected, "Ditolak")){
-            System.out.println("masuk");
+        int baris = TableAset.getSelectedRow();
+        if (baris != -1) {
+            String ID = TableAset.getValueAt(baris, 0).toString();
+//            String SQL = "DELETE FROM pas WHERE ID='" + ID + "'";
+//            int status = KoneksiDB.execute(SQL);
+            boolean hasil = false;
+            hasil = aset.deleteAset(selected);
+            if (hasil == true) {
+                JOptionPane.showMessageDialog(this, "Data berhasil dihapus", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Data gagal dihapus", "Gagal", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Pilih Baris Data Terlebih dahulu", "Error", JOptionPane.WARNING_MESSAGE);
         }
         selectData();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        JasperDesign jd;
+        System.out.println(selected);
+        try {
+            jd = JRXmlLoader.load(new File("").getAbsolutePath() + "/src/Report/userasetrow.jrxml");
+            JRDesignQuery newQuery = new JRDesignQuery();
+            newQuery.setText(Query.getAsetById(selected));
+            jd.setQuery(newQuery);
+            JasperReport jr = JasperCompileManager.compileReport(jd);
+            Map parameter = new HashMap();
+
+            JasperPrint print = JasperFillManager.fillReport(jr, parameter, KoneksiDB.setKoneksi()); //teskoneksi adalah class koneksi ke database
+            JasperViewer.viewReport(print, false);
+        } catch (JRException ex) {
+            Logger.getLogger(UserRiwayat.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JRDesignQuery newQuery = new JRDesignQuery();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        UserAsetTambah fa = new UserAsetTambah();
+        fa.setLocationRelativeTo(null);
+        this.setVisible(false);
+        fa.setVisible(true);
+        selectData();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        UserAsetView fa = new UserAsetView(selected);
+        fa.setLocationRelativeTo(null);
+        this.setVisible(false);
+        fa.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        UserUI fa = new UserUI();
+        fa.setLocationRelativeTo(null);
+        this.setVisible(false);
+        fa.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -278,12 +361,13 @@ public class UserAset extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TablePengajuan;
+    private javax.swing.JTable TableAset;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
